@@ -1,9 +1,11 @@
 import { Route } from "react-router-dom"
-import WelcomePage from "./containers/WelcomePage";
+import WelcomeScreen from "./containers/WelcomeScreen";
+import QuizScreen from "./containers/QuizScreen";
 
 const BaseRouter = () => (
     <>
-        <Route exact path='/' component={WelcomePage}/>
+        <Route exact path='/' component={WelcomeScreen}/>
+        <Route exact path="/quiz" component={QuizScreen}/>
     </>
 );
 

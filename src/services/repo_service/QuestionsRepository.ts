@@ -1,9 +1,7 @@
-import {getQuestionsApi} from "../api_service/api_service";
+import {getQuestionsApi} from "../api_service/ApiService";
 import {Difficulty, Question, QuestionType} from "../../models/Question";
 
 class QuestionsRepository {
-    constructor(/*private readonly apiService*/) {
-    }
 
     getQuestions = async (amount: number, difficulty: Difficulty, type: QuestionType): Promise<Question[]> => {
         const response = await getQuestionsApi({ amount: amount.toString(10), difficulty, type });
