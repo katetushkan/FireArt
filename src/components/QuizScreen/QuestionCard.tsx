@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "./Button/Button";
+import Button from "../Button/Button";
 
 class QuestionCard extends React.Component<any, any>{
     onClick = (event: React.MouseEvent<HTMLButtonElement>) => {

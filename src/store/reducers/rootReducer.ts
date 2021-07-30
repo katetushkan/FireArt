@@ -33,7 +33,12 @@ const rootReducer = (state: State = initialState, action: RootActions) => {
                 ...state,
                 questions: action.questions
             };
-        case actionTypes.ANSWER_QUESTION: return answer(state, action)
+        case actionTypes.ANSWER_QUESTION: return answer(state, action);
+        case actionTypes.EMPTY_QUESTIONS:
+            return {
+                ...state,
+                questions: null
+            }
         default:
             return state;
     }

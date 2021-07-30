@@ -19,6 +19,12 @@ export const answerQuestionSuccess = (value: string, id: number) => {
     } as const;
 };
 
+export const emptyQuestionSuccess = () => {
+    return {
+        type: actionTypes.EMPTY_QUESTIONS,
+    } as const;
+};
+
 export const getQuestions = (amount: number, difficulty: Difficulty, type: QuestionType) => {
     return async (dispatch: Dispatch) => {
         const questions = await questionsRepository.getQuestions(amount, difficulty, type)
@@ -32,4 +38,9 @@ export const answerQuestion = (value: string, id: number) => {
     }
 }
 
-export type RootActions = ReturnType<typeof getQuestionsSuccess> | ReturnType<typeof answerQuestionSuccess>;
+export const emptyQuestion = () => {
+    return (dispatch: Dispatch) => {
+        dispatch(emptyQuestionSuccess())
+    }
+}
+export type RootActions = ReturnType<typeof getQuestionsSuccess> | ReturnType<typeof answerQuestionSuccess> | ReturnType<typeof emptyQuestionSuccess>;

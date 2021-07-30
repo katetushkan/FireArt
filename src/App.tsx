@@ -1,6 +1,6 @@
 import React from 'react';
 import { HashRouter as Router} from 'react-router-dom'
-import BaseRouter from "./routes";
+import BaseRouter from "./routing/routes";
 
 
 class App extends React.Component<any, any> {

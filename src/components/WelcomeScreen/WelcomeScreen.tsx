@@ -1,5 +1,5 @@
 import React from "react";
-import WelcomeScreenConfigForm from "../components/WelcomScreenConfigForm";
+import WelcomeScreenConfigForm from "../../containers/WelcomScreenConfigForm";
 
 class WelcomeScreen extends React.Component<any, any>{
 

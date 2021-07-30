@@ -9,7 +9,7 @@ class InputField extends React.Component<any, any>{
         const fieldValue = event.target.value;
         const cleanValue = fieldValue.replace(/[^0-9]/g, '')
         event.target.value = cleanValue
-        this.props.onChangeHandler(fieldName, cleanValue);
+        this.props.onChange(fieldName, cleanValue);
     }
 
     render (){

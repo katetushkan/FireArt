@@ -1,12 +1,13 @@
 import React from "react";
-import Selector from "./Form/Selector";
-import InputField from "./Form/InputField";
-import Button from "./Button/Button";
+import Selector from "../components/Form/Selector";
+import InputField from "../components/Form/InputField";
+import Button from "../components/Button/Button";
 import {Difficulty} from "../models/Question";
 import {getQuestions} from "../store/actions/rootActions";
 import {connect} from "react-redux";
 import {Redirect, RouteComponentProps, withRouter} from "react-router";
 import {State} from "../store/reducers/rootReducer";
+import * as routes from "../routing/constnts";
 
 type IProps = {} & ReturnType<typeof mapDispatchToProps> & ReturnType<typeof mapStateToProps>;
 
@@ -34,13 +35,13 @@ class WelcomeScreenConfigForm extends React.Component<RouteComponentProps & IPro
         const { questions } = this.props;
 
         if (questions !== null) {
-            return <Redirect to="/quiz" />;
+            return <Redirect to={routes.QUIZ_SCREEN} />;
         }
 
         return(
             <form className="welcome-screen_form">
                 <Selector onChangeHandler={this.handleChange.bind(this)}/>
-                <InputField onChangeHandler={this.handleChange.bind(this)}/>
+                <InputField onChange={this.handleChange.bind(this)}/>
                 <Button value="true" className="accent_button" onClick={this.handleClick.bind(this)}>true</Button>
             </form>
         )

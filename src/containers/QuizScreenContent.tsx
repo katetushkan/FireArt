@@ -1,9 +1,10 @@
 import React from "react";
-import ProgressBar from "./utils/ProgressBar";
-import QuestionCard from "./QuestionCard";
+import ProgressBar from "../components/Utils/ProgressBar";
+import QuestionCard from "../components/QuizScreen/QuestionCard";
 import {answerQuestion} from "../store/actions/rootActions";
 import {connect} from "react-redux";
 import {RouteComponentProps, withRouter} from "react-router";
+import * as routes from "../routing/constnts";
 
 interface State {
     question?: string,
@@ -33,12 +34,13 @@ class QuizScreenContent extends React.Component<RouteComponentProps & IProps, St
 
     handleClick = (value: string) => {
         if (this.state.score === this.state.count) {
+            this.props.answerQuestion(value, this.state.score - 1)
             const { history } = this.props
-            history.push("/final")
+            history.push(routes.FINAL_SCREEN)
         }
         else {
             let score = this.state.score + 1
-            this.props.answerQuestion(value, this.state.score )
+            this.props.answerQuestion(value, this.state.score - 1)
             this.setState({
                 score: score
             })

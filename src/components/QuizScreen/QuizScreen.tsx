@@ -1,5 +1,5 @@
 import React from "react";
-import QuizScreenContent from "../components/QuizScreenContent";
+import QuizScreenContent from "../../containers/QuizScreenContent";
 
 class QuizScreen extends React.Component<any, any>{
 
