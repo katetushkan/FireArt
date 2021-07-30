@@ -1,7 +1,7 @@
 import { Route } from "react-router-dom"
 import WelcomeScreen from "../components/WelcomeScreen/WelcomeScreen";
 import QuizScreen from "../components/QuizScreen/QuizScreen";
-import FinalScreen from "../components/FinalScreen/FinalScreen";
+import FinalScreen from "../containers/FinalScreen";
 
 const BaseRouter = () => (
     <>

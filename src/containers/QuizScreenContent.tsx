@@ -1,10 +1,12 @@
 import React from "react";
 import ProgressBar from "../components/Utils/ProgressBar";
 import QuestionCard from "../components/QuizScreen/QuestionCard";
-import {answerQuestion} from "../store/actions/rootActions";
+import {answerQuestion, emptyQuestion} from "../store/actions/rootActions";
 import {connect} from "react-redux";
 import {RouteComponentProps, withRouter} from "react-router";
 import * as routes from "../routing/constnts";
+import Button from "../components/Button/Button";
+import * as routing from "../routing/constnts";
 
 interface State {
     question?: string,
@@ -47,9 +49,16 @@ class QuizScreenContent extends React.Component<RouteComponentProps & IProps, St
         }
     }
 
+    handleClickBack = () => {
+        const { history } = this.props
+        this.props.emptyQuestions();
+        history.push(routing.WELCOME_SCREEN)
+    }
+
     render() {
         return (
             <div className="quiz-screen-content">
+                <Button className="go-back__button" value="back" onClick={this.handleClickBack.bind(this)}/>
                 <h1 className="quiz-screen_h1">Welcome to Quiz</h1>
                 <h3 className="quiz-screen_h3">level {this.state.score}</h3>
                 <ProgressBar score={this.state.score} count={this.state.count}/>
@@ -68,6 +77,7 @@ const mapStateToProps = (state: any) => {
 const mapDispatchToProps = (dispatch: any) => {
     return {
         answerQuestion: (value: string, id: number) => dispatch(answerQuestion(value, id)),
+        emptyQuestions: () => dispatch(emptyQuestion())
     }
 }
 

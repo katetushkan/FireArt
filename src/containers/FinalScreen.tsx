@@ -1,15 +1,15 @@
 import React from "react";
-import Icon from "../Form/Icon";
-import UserIcon from "../../assets/icons/user-icon.svg"
-import Score from "../Utils/Score";
-import StarRating from "../StarRating/StarRating";
+import Icon from "../components/Form/Icon";
+import UserIcon from "../assets/icons/user-icon.svg"
+import Score from "../components/Utils/Score";
+import StarRating from "../components/StarRating/StarRating";
 import {connect} from "react-redux";
 import {RouteComponentProps, withRouter} from "react-router";
-import AnswersList from "./AnswersList";
-import Button from "../Button/Button";
-import * as routing from "../../routing/constnts";
-import {answerQuestion, emptyQuestion} from "../../store/actions/rootActions";
-import {Question} from "../../models/Question";
+import AnswersList from "../components/FinalScreen/AnswersList";
+import Button from "../components/Button/Button";
+import * as routing from "../routing/constnts";
+import {answerQuestion, emptyQuestion} from "../store/actions/rootActions";
+import {Question} from "../models/Question";
 
 type IProps = {} & ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>;
 class FinalScreen extends React.Component<RouteComponentProps & IProps, any>{
@@ -46,6 +46,11 @@ class FinalScreen extends React.Component<RouteComponentProps & IProps, any>{
 
     handleClick = () => {
         const { history } = this.props
+        history.push(routing.WELCOME_SCREEN)
+    }
+
+    handleClickBack = () => {
+        const { history } = this.props
         this.props.emptyQuestions();
         history.push(routing.WELCOME_SCREEN)
     }
@@ -54,6 +59,7 @@ class FinalScreen extends React.Component<RouteComponentProps & IProps, any>{
         return (
             <main className="final-screen">
                <div className="final-screen-content-wrapper">
+                   <Button className="go-back__button" value="back" onClick={this.handleClickBack.bind(this)}/>
                    <div className="final-score-wrapper">
                        <div className="user-icon-frame">
                            <Icon icon={UserIcon}/>
