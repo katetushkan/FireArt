@@ -1,18 +1,21 @@
-import React, {Fragment} from "react";
-import Selector from "./utils/Selector";
-import InputField from "./utils/InputField";
-import Button from "./utils/Button";
+import React from "react";
+import Selector from "./Form/Selector";
+import InputField from "./Form/InputField";
+import Button from "./Button/Button";
 import {Difficulty} from "../models/Question";
 import {getQuestions} from "../store/actions/rootActions";
 import {connect} from "react-redux";
-import {Redirect} from "react-router";
+import {Redirect, RouteComponentProps, withRouter} from "react-router";
+import {State} from "../store/reducers/rootReducer";
 
-class WelcomeScreenConfigForm extends React.Component<any, any>{
+type IProps = {} & ReturnType<typeof mapDispatchToProps> & ReturnType<typeof mapStateToProps>;
+
+class WelcomeScreenConfigForm extends React.Component<RouteComponentProps & IProps, any>{
 
     state = {
         amount: "10",
         difficulty: Difficulty.HARD,
-        questions: false
+        flag: false
     }
 
     handleChange = (field: string, value: string) => {
@@ -20,34 +23,31 @@ class WelcomeScreenConfigForm extends React.Component<any, any>{
             [field]: value
         })
     }
-    handleClick = async () => {
+    handleClick = async (event: any) => {
+        event.preventDefault()
         const amount = this.state.amount
         const difficulty = this.state.difficulty
         await this.props.getAllQuestions(parseInt(amount), difficulty)
-        this.setState({
-            questions: true
-        })
     }
 
     render() {
+        const { questions } = this.props;
+
+        if (questions !== null) {
+            return <Redirect to="/quiz" />;
+        }
+
         return(
-            <Fragment>
-                {    !this.state.questions ?
-                        <form className="welcome-screen_form">
-                            <Selector onChangeHandler={this.handleChange.bind(this)}/>
-                            <InputField onChangeHandler={this.handleChange.bind(this)}/>
-                            <Button className="accent_button" onClickHandler={this.handleClick.bind(this)}/>
-                        </form>
-                    : <Redirect to="/quiz"/>
-                }
-            </Fragment>
-
-
+            <form className="welcome-screen_form">
+                <Selector onChangeHandler={this.handleChange.bind(this)}/>
+                <InputField onChangeHandler={this.handleChange.bind(this)}/>
+                <Button value="true" className="accent_button" onClick={this.handleClick.bind(this)}>true</Button>
+            </form>
         )
     }
 }
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: State) => {
     return{
         questions: state.questions,
     }
@@ -59,4 +59,4 @@ const mapDispatchToProps = (dispatch: any) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(WelcomeScreenConfigForm);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(WelcomeScreenConfigForm));

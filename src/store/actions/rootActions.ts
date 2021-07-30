@@ -11,6 +11,14 @@ export const getQuestionsSuccess = (questions: Question[]) => {
     } as const;
 };
 
+export const answerQuestionSuccess = (value: string, id: number) => {
+    return {
+        type: actionTypes.ANSWER_QUESTION,
+        value: value,
+        id: id
+    } as const;
+};
+
 export const getQuestions = (amount: number, difficulty: Difficulty, type: QuestionType) => {
     return async (dispatch: Dispatch) => {
         const questions = await questionsRepository.getQuestions(amount, difficulty, type)
@@ -18,4 +26,10 @@ export const getQuestions = (amount: number, difficulty: Difficulty, type: Quest
     }
 }
 
-export type RootActions = ReturnType<typeof getQuestionsSuccess>;
+export const answerQuestion = (value: string, id: number) => {
+    return (dispatch: Dispatch) => {
+        dispatch(answerQuestionSuccess(value, id))
+    }
+}
+
+export type RootActions = ReturnType<typeof getQuestionsSuccess> | ReturnType<typeof answerQuestionSuccess>;

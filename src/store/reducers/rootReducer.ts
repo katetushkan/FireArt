@@ -1,9 +1,10 @@
 import * as actionTypes from '../actions/actionTypes';
 import {Question} from "../../models/Question";
-import {RootActions} from "../actions/rootActions";
+import {answerQuestionSuccess, RootActions} from "../actions/rootActions";
+import {updatedObject} from "../utility";
 
 
-interface State {
+export interface State {
     questions: Question[] | null;
     loading: boolean;
     error: null;
@@ -15,6 +16,16 @@ const initialState = {
     error: null
 };
 
+const answer = (state: State, action: ReturnType<typeof answerQuestionSuccess>) => {
+    let questions = state.questions
+    if (questions){
+        questions[action.id].user_answer = action.value
+    }
+    return updatedObject(state,{
+        questions: questions
+    });
+}
+
 const rootReducer = (state: State = initialState, action: RootActions) => {
     switch (action.type){
         case actionTypes.GET_QUESTIONS:
@@ -22,6 +33,7 @@ const rootReducer = (state: State = initialState, action: RootActions) => {
                 ...state,
                 questions: action.questions
             };
+        case actionTypes.ANSWER_QUESTION: return answer(state, action)
         default:
             return state;
     }

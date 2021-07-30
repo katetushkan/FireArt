@@ -9,7 +9,8 @@ class QuestionsRepository {
             category: question.category,
             correct_answer: question.correct_answer,
             incorrect_answers: question.incorrect_answers,
-            question: question.question
+            question: question.question,
+            user_answer: null
         }));
     }
 }

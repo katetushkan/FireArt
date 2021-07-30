@@ -1,12 +1,13 @@
 import React from "react";
+import QuizScreenContent from "../components/QuizScreenContent";
 
 class QuizScreen extends React.Component<any, any>{
 
     render() {
         return (
-            <div className="quiz-screen">
-                <h1 className="welcome-screen_h1">Welcome to Quiz</h1>
-            </div>
+            <main className="quiz-screen">
+                <QuizScreenContent/>
+            </main>
         )
     }
 
