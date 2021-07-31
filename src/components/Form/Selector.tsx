@@ -1,7 +1,6 @@
 import React from "react";
 import {Difficulty} from "../../models/Question";
-import SelectorIcon from "../../assets/icons/selector-icon.svg"
-import Icon from "./Icon";
+import Icon from "../Icon/Icon";
 
 class Selector extends React.Component<any, any>{
 
@@ -15,7 +14,7 @@ class Selector extends React.Component<any, any>{
         return(
             <div className="welcome-screen-form-item">
                 <div className="welcome-screen-form-item-label">
-                    <Icon icon={SelectorIcon}/>
+                    <Icon name="gamble"/>
                     <label className="form-item-name">Difficulty</label>
                 </div>
                 <select name="difficulty" className="welcome-screen-select" onChange={this.onFieldChange.bind(this)}>

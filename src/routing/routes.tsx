@@ -1,13 +1,17 @@
+import {Redirect} from "react-router";
 import { Route } from "react-router-dom"
-import WelcomeScreen from "../components/WelcomeScreen/WelcomeScreen";
-import QuizScreen from "../components/QuizScreen/QuizScreen";
+
+import WelcomeScreen from "../pages/WelcomeScreen/WelcomeScreen";
+import QuizScreen from "../pages/QuizScreen/QuizScreen";
 import FinalScreen from "../containers/FinalScreen";
+import {Routes} from "./constnts";
 
 const BaseRouter = () => (
     <>
-        <Route exact path='/' component={WelcomeScreen}/>
-        <Route exact path="/quiz" component={QuizScreen}/>
-        <Route exact path="/final" component={FinalScreen}/>
+        <Route exact path={Routes.WELCOME_SCREEN} component={WelcomeScreen}/>
+        <Route exact path={Routes.QUIZ_SCREEN} component={QuizScreen}/>
+        <Route exact path={Routes.FINAL_SCREEN} component={FinalScreen}/>
+        <Redirect to={Routes.WELCOME_SCREEN} />
     </>
 );
 

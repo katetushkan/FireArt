@@ -1,91 +1,67 @@
 import React from "react";
-import Icon from "../components/Form/Icon";
-import UserIcon from "../assets/icons/user-icon.svg"
-import Score from "../components/Utils/Score";
+import Icon from "../components/Icon/Icon";
+import Score from "../components/Score/Score";
 import StarRating from "../components/StarRating/StarRating";
-import {connect} from "react-redux";
-import {RouteComponentProps, withRouter} from "react-router";
-import AnswersList from "../components/FinalScreen/AnswersList";
+import { Redirect, RouteComponentProps, withRouter } from "react-router";
+import AnswersList from "../pages/FinalScreen/AnswersList";
 import Button from "../components/Button/Button";
-import * as routing from "../routing/constnts";
-import {answerQuestion, emptyQuestion} from "../store/actions/rootActions";
-import {Question} from "../models/Question";
+import { emptyQuestion } from "../store/actions/rootActions";
+import { Link } from "react-router-dom";
+import { Routes } from "../routing/constnts";
+import { connect } from "react-redux";
+import { State } from "../store/reducers/rootReducer";
 
 type IProps = {} & ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>;
-class FinalScreen extends React.Component<RouteComponentProps & IProps, any>{
 
-    constructor(props:any) {
-        super(props);
-        this.state = {
-            questions: [],
-            count: 0,
-            score: 0
-        }
+class FinalScreen extends React.Component<RouteComponentProps & IProps, any> {
+  handleClickBack = () => {
+    this.props.emptyQuestions();
+  }
+
+  render() {
+    const { questions, questionsCount } = this.props;
+
+    if (questions === null || questionsCount === undefined) {
+      return <Redirect to={Routes.WELCOME_SCREEN}/>;
     }
 
-    getScore = (questions: Question[]) =>{
-        let score = 0;
-        for (let index = 0; index < questions.length; index++){
-            if (!questions[index].incorrect_answers.includes(questions[index].user_answer as string)){
-                score++
-            }
-        }
+    const score = questions.filter(question => question.correct_answer === question.user_answer).length;
 
-        return score
-    }
-
-    componentDidMount() {
-        let questions = this.props.questions
-        let score = this.getScore(questions)
-        this.setState({
-            questions: this.props.questions,
-            count: this.props.questions.length,
-            score: score
-        })
-    }
-
-    handleClick = () => {
-        const { history } = this.props
-        history.push(routing.WELCOME_SCREEN)
-    }
-
-    handleClickBack = () => {
-        const { history } = this.props
-        this.props.emptyQuestions();
-        history.push(routing.WELCOME_SCREEN)
-    }
-
-    render() {
-        return (
-            <main className="final-screen">
-               <div className="final-screen-content-wrapper">
-                   <Button className="go-back__button" value="back" onClick={this.handleClickBack.bind(this)}/>
-                   <div className="final-score-wrapper">
-                       <div className="user-icon-frame">
-                           <Icon icon={UserIcon}/>
-                       </div>
-                   </div>
-                   <h1 className="final-score_h1">You scored</h1>
-                   <Score score={this.state.score} count={this.state.count}/>
-                   <StarRating count={this.state.count}/>
-                   <AnswersList questions={this.state.questions}/>
-                   <Button value="again" className="accent__button" onClick={this.handleClick.bind(this)}>PLAY AGAIN</Button>
-               </div>
-            </main>
-        )
-    }
-
+    return (
+      <main className="final-screen">
+        <div className="final-screen__content-wrapper">
+          <Link to={Routes.WELCOME_SCREEN} onClick={this.handleClickBack}>
+            <Icon name="cancel"/>
+          </Link>
+          <div className="final-score-wrapper">
+            <div className="user-icon-frame">
+              <Icon name='user'/>
+            </div>
+          </div>
+          <h1 className="final-score_h1">You scored</h1>
+          <Score
+            score={score}
+            count={questionsCount}
+          />
+          <StarRating score={score} count={questionsCount}/>
+          <AnswersList questions={questions}/>
+          <Button type='accent' to={Routes.QUIZ_SCREEN}>PLAY AGAIN</Button>
+        </div>
+      </main>
+    )
+  }
 }
 
-const mapStateToProps = (state: any) => {
-    return{
-        questions: state.questions,
-    }
+const mapStateToProps = (state: State) => {
+  return {
+    questions: state.questions,
+    questionsCount: state.questions?.length
+  }
 }
 const mapDispatchToProps = (dispatch: any) => {
-    return {
-        emptyQuestions: () => dispatch(emptyQuestion()),
-    }
+  return {
+    emptyQuestions: () => dispatch(emptyQuestion()),
+  }
 }
 
 

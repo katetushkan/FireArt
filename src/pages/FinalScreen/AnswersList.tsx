@@ -13,7 +13,7 @@ const AnswersList = ({questions}: IProps) =>{
         <div className="rating-wrapper">
             {
                 questions && questions.map((question, index) =>
-                    <AnswerCard question={question.question} user_answer={question.user_answer} incorrect_answers={question.incorrect_answers}/>
+                    <AnswerCard key={index} question={question.question} user_answer={question.user_answer} incorrect_answers={question.incorrect_answers}/>
                 )
             }
         </div>

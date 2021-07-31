@@ -3,7 +3,7 @@ import { HashRouter as Router} from 'react-router-dom'
 import BaseRouter from "./routing/routes";
 
 
-class App extends React.Component<any, any> {
+class App extends React.Component {
   render(): JSX.Element {
     return(
         <Router>

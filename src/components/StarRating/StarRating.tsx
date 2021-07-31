@@ -1,20 +1,25 @@
-import React from "react";
-import Star from "./Star";
+import * as React from "react";
+import Star from "../Star/Star";
 
-interface IProps{
-    count: number
+interface IProps {
+  score: number;
+  count: number;
 }
 
-const StarRating = ({count}: IProps) =>{
-    const array = Array.from(Array(count).keys())
-    return(
-        <div className="rating-wrapper">
-            {
-               array.map(( id) =>
-                    <Star key={id} id={id.toString()}/>
-               )}
-        </div>
-    )
+const StarRating: React.FC<IProps> = ({ count, score }) => {
+  const array = new Array(10).fill(null);
+  return (
+    <div className="star-rating">
+      {
+        array.map((_, index) =>
+          <Star
+            key={index}
+            id={index.toString()}
+            filled={index + 1 < score}
+          />
+        )}
+    </div>
+  )
 }
 
 export default StarRating;

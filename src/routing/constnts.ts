@@ -1,3 +1,5 @@
-export const WELCOME_SCREEN='/';
-export const QUIZ_SCREEN='/quiz';
-export const FINAL_SCREEN='/final';
+export enum Routes {
+    WELCOME_SCREEN = '/',
+    QUIZ_SCREEN = '/quiz',
+    FINAL_SCREEN = '/final',
+}

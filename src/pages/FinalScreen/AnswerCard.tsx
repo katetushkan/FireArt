@@ -1,6 +1,6 @@
-import Icon from "../Form/Icon";
-import TrueAnswer from "../../assets/icons/true-answer.svg";
-import FalseAnswer from "../../assets/icons/false-answer.svg";
+import Icon from "../../components/Icon/Icon";
+import TrueAnswer from "../../components/Icon/res/true-answer.svg";
+import FalseAnswer from "../../components/Icon/res/false-answer.svg";
 
 interface IProps {
     question: string
@@ -13,7 +13,7 @@ const AnswerCard = ({question, user_answer, incorrect_answers }: IProps) => {
         return(
             <div className="answer-card-wrapper false">
                 <p className="answer-card_p">{question}</p>
-                <Icon icon={FalseAnswer}/>
+                <Icon name="false"/>
             </div>
         )
     }
@@ -21,7 +21,7 @@ const AnswerCard = ({question, user_answer, incorrect_answers }: IProps) => {
         return(
             <div className="answer-card-wrapper true">
                 <p className="answer-card_p">{question}</p>
-                <Icon icon={TrueAnswer}/>
+                <Icon name="true"/>
             </div>
         )
     }
