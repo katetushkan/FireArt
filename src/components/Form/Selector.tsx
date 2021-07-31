@@ -2,6 +2,7 @@ import React from "react";
 import {Difficulty} from "../../models/Question";
 import Icon from "../Icon/Icon";
 
+import "./Selector.css"
 class Selector extends React.Component<any, any>{
 
     onFieldChange(event: React.ChangeEvent<HTMLSelectElement>) {

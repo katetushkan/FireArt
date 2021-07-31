@@ -1,5 +1,8 @@
 import React from "react";
-import WelcomeScreenConfigForm from "../../containers/WelcomScreenConfigForm";
+
+import TriviaLogo from "./res/trivia-logo.png";
+import WelcomeScreenConfigForm from "../../containers/WelcomScreenConfigForm/WelcomScreenConfigForm";
+import "./WelcomeScreen.css"
 
 class WelcomeScreen extends React.Component {
 
@@ -7,7 +10,7 @@ class WelcomeScreen extends React.Component {
         return (
             <main className="welcome-screen">
                 <h1 className="welcome-screen__hero">Welcome to the</h1>
-                <img alt="trivia" className="welcome-screen__logo"/>
+                <img alt="trivia" className="welcome-screen__logo" src={TriviaLogo}/>
                 <WelcomeScreenConfigForm/>
             </main>
         )

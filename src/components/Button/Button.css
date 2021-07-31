@@ -1,3 +1,46 @@
 .button {
+  border-radius: 14px;
+  text-align: center;
+}
+.button--accent {
+  background: linear-gradient(90deg, #FFA67A 0%, #FF6065 100%);
+  box-shadow: 0 6px var(--accent-shadow);
+  transition: box-shadow 100ms ease, transform 100ms ease;
+}
 
+.button--accent:hover {
+  box-shadow: 0 10px var(--accent-shadow);
+  transform: translateY(-4px);
+}
+
+.button--accent:focus {
+  box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.2), 0 10px var(--accent-shadow);
+  transform: translateY(-4px);
+}
+
+.button--accent:active {
+  box-shadow: 0 0 var(--accent-shadow);
+  transform: translateY(4px);
+}
+
+.welcome-screen__submit {
+  min-width: 319px;
+  height: 64px;
+  color: var(--white-text);
+  font-family: "QuickSand Bold";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
+  text-transform: uppercase;
+}
+
+@media screen and (min-width: 1200px){
+  .welcome-screen__submit {
+    min-width: 446px;
+    height: 89px;
+  }
+
+  .button--accent {
+    margin-bottom: 173px;
+  }
 }

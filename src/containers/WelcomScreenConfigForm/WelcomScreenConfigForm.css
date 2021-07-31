@@ -1,0 +1,14 @@
+.welcome-screen__form {
+  align-self: center;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 319px;
+}
+
+/* desktops */
+@media screen and (min-width: 1200px){
+  .welcome-screen__form {
+    min-width: 446px;
+  }
+
+}

@@ -1,15 +1,16 @@
 import React from "react";
-import Selector from "../components/Form/Selector";
-import InputField from "../components/InputField/InputField";
-import Button from "../components/Button/Button";
-import { Difficulty } from "../models/Question";
-import { getQuestions } from "../store/actions/rootActions";
+import Selector from "../../components/Form/Selector";
+import InputField from "../../components/InputField/InputField";
+import Button from "../../components/Button/Button";
+import { Difficulty } from "../../models/Question";
+import { getQuestions } from "../../store/actions/rootActions";
 import { Redirect } from "react-router";
-import { State } from "../store/reducers/rootReducer";
-import { Routes } from "../routing/constnts";
-import Icon from "../components/Icon/Icon";
+import { State } from "../../store/reducers/rootReducer";
+import { Routes } from "../../routing/constnts";
+import Icon from "../../components/Icon/Icon";
 import { connect } from "react-redux";
 
+import "./WelcomScreenConfigForm.css"
 
 type IProps = {}
   & ReturnType<typeof mapDispatchToProps>

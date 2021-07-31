@@ -1,0 +1,57 @@
+.welcome-screen {
+  background-color: var(--cobalt);
+  background-image: url("./background-mobile/blue-left.svg"),
+                    url("./background-mobile/blue-right.svg"),
+                    url("./background-mobile/blue-striped.svg"),
+                    url("./background-mobile/coral-striped.svg");
+
+  background-repeat: no-repeat;
+  background-position: left top, right bottom, left bottom, right top ;
+  display: flex;
+  flex-direction: column;
+  padding-top: 116px;
+  padding-bottom: 37px;
+}
+
+.welcome-screen__hero {
+  font-family: "QuickSand Bold", serif;
+  font-style: normal;
+  font-size: 26px;
+  line-height: 33px;
+  text-align: center;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.welcome-screen__logo {
+  width: 280px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 110px;
+
+}
+
+/* desktops */
+@media screen and (min-width: 1200px){
+
+  .welcome-screen__hero {
+    font-size: 46px;
+    line-height: 57px;
+    margin-bottom: 35px;
+  }
+
+  .welcome-screen__logo {
+    width: 600px;
+    margin-bottom: 110px;
+  }
+
+  .welcome-screen {
+    padding-top: 180px;
+    background-image: url("./background-desktop/blue-left.svg"),
+                      url("./background-desktop/blue-right.svg"),
+                      url("./background-desktop/blue-striped.svg"),
+                      url("./background-desktop/coral-striped.svg");
+  }
+
+}
