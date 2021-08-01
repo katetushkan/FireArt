@@ -25,9 +25,8 @@
   border: 1px solid var(--white-text);
   border-radius: 10px;
   height: 54px;
-  font-family: "QuickSand Bold", serif;
-  font-style: normal;
   font-size: 13px;
+  font-weight: bold;
   color: var(--white-text);
   padding: 16px 18px;
   -webkit-appearance: none;

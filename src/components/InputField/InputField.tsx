@@ -5,6 +5,7 @@ import { numericOnly } from "../../services/utils";
 import InputLabel from "../InputLabel/InputLabel";
 
 import './InputField.css';
+import { HTMLAttributes } from "react";
 
 interface IProps {
   name: string;
@@ -12,6 +13,7 @@ interface IProps {
   label: string;
   value: string;
   type: 'text' | 'number';
+  inputMode?: HTMLAttributes<HTMLInputElement>['inputMode'];
   onChange: (name: string, value: string) => void;
   className?: string;
 }
@@ -20,7 +22,7 @@ class InputField extends React.Component<IProps> {
 
   onFieldChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const fieldValue = event.target.value;
-    if (!event.target.validity.valid || !this.validInput(fieldValue)) {
+    if (!event.target.validity.valid || (fieldValue.length > 0 && !this.validInput(fieldValue))) {
       event.preventDefault();
       return;
     }
@@ -32,8 +34,8 @@ class InputField extends React.Component<IProps> {
   }
 
   validInput = (value: string): boolean => {
-    const { type } = this.props;
-    if (type === "number") {
+    const { inputMode } = this.props;
+    if (inputMode === "numeric") {
       return numericOnly(value);
     }
 
@@ -41,7 +43,7 @@ class InputField extends React.Component<IProps> {
   }
 
   render() {
-    const { name, label, icon, type, value, className } = this.props;
+    const { name, label, icon, type, inputMode, value, className } = this.props;
 
     return (
       <InputLabel
@@ -51,6 +53,7 @@ class InputField extends React.Component<IProps> {
       >
         <input
           type={type}
+          inputMode={inputMode}
           className="input-field__input"
           name={name}
           value={value}

@@ -3,7 +3,7 @@ import { Route } from "react-router-dom"
 
 import WelcomeScreen from "../pages/WelcomeScreen/WelcomeScreen";
 import QuizScreen from "../pages/QuizScreen/QuizScreen";
-import FinalScreen from "../containers/FinalScreen";
+import FinalScreen from "../containers/FinalScreen/FinalScreen";
 import {Routes} from "./constnts";
 
 const BaseRouter = () => (

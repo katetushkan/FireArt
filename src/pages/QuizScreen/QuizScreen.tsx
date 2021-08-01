@@ -1,16 +1,17 @@
 import React from "react";
-import QuizScreenContent from "../../containers/QuizScreenContent";
+import QuizScreenContent from "../../containers/QuizScreenContent/QuizScreenContent";
 
-class QuizScreen extends React.Component<any, any>{
+import "./QuizScreen.css";
 
-    render() {
-        return (
-            <main className="quiz-screen">
-                <QuizScreenContent/>
-            </main>
-        )
-    }
+class QuizScreen extends React.Component<any, any> {
 
+  render() {
+    return (
+      <main className="quiz-screen">
+        <QuizScreenContent className="quiz-screen__content"/>
+      </main>
+    )
+  }
 }
 
 

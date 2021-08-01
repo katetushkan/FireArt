@@ -1,5 +1,6 @@
 import {getQuestionsApi} from "../api_service/ApiService";
 import {Difficulty, Question, QuestionType} from "../../models/Question";
+import { decodeHTML } from "../utils";
 
 class QuestionsRepository {
 
@@ -9,7 +10,7 @@ class QuestionsRepository {
             category: question.category,
             correct_answer: question.correct_answer,
             incorrect_answers: question.incorrect_answers,
-            question: question.question,
+            question: decodeHTML(question.question),
             user_answer: null
         }));
     }

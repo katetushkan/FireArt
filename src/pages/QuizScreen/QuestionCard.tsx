@@ -1,10 +1,14 @@
 import React from "react";
 import Button from "../../components/Button/Button";
+import clsx from "clsx";
+
+import "./QuestionCard.css";
 
 interface IProps {
   question: string;
   answers: string[];
   onAnswer: (value: string) => void;
+  className?: string;
 }
 
 class QuestionCard extends React.Component<IProps> {
@@ -15,17 +19,17 @@ class QuestionCard extends React.Component<IProps> {
   }
 
   render() {
-    const { answers, question } = this.props;
+    const { answers, question, className } = this.props;
     return (
-      <article className="question-card">
+      <article className={clsx("question-card", className)}>
         <p className="question-card__trivia">{question}</p>
         {answers.map((answer, index) => (
           <Button
             key={answer}
-            autoFocus={index === 0}
             value={answer}
             className="question__button"
             onClick={this.handleClick}
+            type="normal"
           >
             {answer}
           </Button>

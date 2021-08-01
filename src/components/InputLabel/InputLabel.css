@@ -9,8 +9,6 @@
 }
 
 .input-label__text {
-  font-family: "QuickSand Bold", serif;
-  font-style: normal;
   font-weight: bold;
   font-size: 13px;
   color: var(--coral-acsent);

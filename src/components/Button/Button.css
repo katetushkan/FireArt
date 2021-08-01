@@ -1,7 +1,9 @@
 .button {
+  display: block;
   border-radius: 14px;
   text-align: center;
 }
+
 .button--accent {
   background: linear-gradient(90deg, #FFA67A 0%, #FF6065 100%);
   box-shadow: 0 6px var(--accent-shadow);
@@ -23,5 +25,27 @@
   transform: translateY(4px);
 }
 
-@media screen and (min-width: 1200px){
+.button--normal {
+  background-color: var(--white-text);
+  border: 2px solid var(--dark-cobalt);
+  border-radius: 14px;
+  color: var(--dark-cobalt);
+}
+
+.button--normal:hover {
+  background-color: var(--dark-cobalt);
+  color: var(--white-text);
+  transition: box-shadow 100ms ease, transform 100ms ease;
+  box-shadow: 0 6px var(--cobalt-shadow);
+  transform: translateY(-4px);
+}
+
+.button--normal:focus{
+  box-shadow: 0 5px 3px rgba(219, 222, 255, 1);
+  transform: translateY(-4px);
+}
+
+.button--normal:active {
+  box-shadow: 0 0 var(--cobalt-shadow);
+  transform: translateY(4px);
 }

@@ -1,0 +1,38 @@
+.quiz-screen{
+  flex: 1 0;
+  background-color: var(--white-text);
+  background-image: url("./background-mobile/blue-left.svg"),
+                    url("./background-mobile/blue-striped.svg"),
+                    url("./background-mobile/blue-right.svg"),
+                    url("./background-mobile/coral-striped.svg"),
+                    url("./background-mobile/coral.svg");
+
+  background-repeat: no-repeat;
+  background-position: left top, left bottom, right bottom, right top, right bottom;
+  display: flex;
+  flex-direction: column;
+  padding-top: 48px;
+  padding-bottom: 113px;
+}
+
+.quiz-screen__content{
+  max-width: 340px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (min-width: 1200px) {
+  .quiz-screen__content{
+    max-width: 1040px;
+  }
+
+  .quiz-screen{
+    background-image: url("./background-desktop/blue-left.svg"),
+                      url("./background-desktop/blue-striped.svg"),
+                      url("./background-desktop/blue-striped-left.svg"),
+                      url("./background-desktop/coral.svg");
+    background-position: left top, right 100px, left bottom, right bottom;
+    padding-top: 103px;
+    padding-bottom: 173px;
+  }
+}

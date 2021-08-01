@@ -1,4 +1,5 @@
 .welcome-screen {
+  height: 100%;
   background-color: var(--cobalt);
   background-image: url("./background-mobile/blue-left.svg"),
                     url("./background-mobile/blue-right.svg"),
@@ -14,8 +15,7 @@
 }
 
 .welcome-screen__hero {
-  font-family: "QuickSand Bold", serif;
-  font-style: normal;
+  font-weight: bold;
   font-size: 26px;
   line-height: 33px;
   text-align: center;

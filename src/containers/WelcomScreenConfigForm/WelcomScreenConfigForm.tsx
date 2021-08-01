@@ -68,7 +68,8 @@ class WelcomeScreenConfigForm extends React.Component<IProps, IState> {
           name="amount"
           icon={<Icon name='coin'/>}
           label="Amount"
-          type="number"
+          type="text"
+          inputMode="numeric"
           value={amount}
           onChange={this.handleChange}
         />

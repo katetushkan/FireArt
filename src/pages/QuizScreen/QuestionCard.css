@@ -1,0 +1,44 @@
+.question-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.question-card__trivia {
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 36px;
+  color: var(--dark-cobalt);
+  margin-bottom: 51px;
+}
+
+.question__button {
+  width: 340px;
+  height: 64px;
+  color: var(--dark-cobalt);
+  font-weight: bold;
+  font-size: 15px;
+  text-transform: uppercase;
+  line-height: 22px;
+  margin-bottom: 9px;
+}
+
+@media screen and (min-width: 1200px) {
+
+  .question-card__trivia{
+    font-size: 31px;
+    line-height: 45px;
+    max-width: 631px;
+    text-align: center;
+    color: var(--dark-cobalt);
+    margin-bottom: 94px;
+  }
+
+  .question__button {
+    width: 446px;
+    height: 89px;
+    font-size: 21px;
+    margin-bottom: 37px;
+  }
+
+}

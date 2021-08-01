@@ -1,0 +1,33 @@
+.progress-bar__progress {
+  border-radius: 20px;
+  height: 5px;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.progress-bar__progress[value] {
+  background: linear-gradient(180deg, #FF7878 0%, #FF7878 100%);
+}
+.progress-bar__score {
+  color: var(--cobalt);
+  font-size: 14px;
+}
+
+.progress-bar__strong {
+  color: var(--score);
+  font-size: 20px;
+}
+
+@media screen and (min-width: 1200px) {
+  .progress-bar__score {
+    font-size: 19px;
+  }
+
+  .progress-bar__strong {
+    font-size: 25px;
+  }
+
+  .progress-bar__progress {
+    margin-bottom: 100px;
+  }
+}
