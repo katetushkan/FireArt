@@ -1,0 +1,24 @@
+.input-label {
+  display: block;
+}
+
+.input-label__wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.input-label__text {
+  font-family: "QuickSand Bold", serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 13px;
+  color: var(--coral-acsent);
+}
+
+.input-label__icon {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  margin-right: 10px;
+}

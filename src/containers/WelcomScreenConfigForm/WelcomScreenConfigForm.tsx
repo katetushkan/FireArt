@@ -1,5 +1,8 @@
-import React from "react";
-import Selector from "../../components/Form/Selector";
+import * as React from "react";
+import { connect } from "react-redux";
+import clsx from "clsx";
+
+import Select from "../../components/Select/Select";
 import InputField from "../../components/InputField/InputField";
 import Button from "../../components/Button/Button";
 import { Difficulty } from "../../models/Question";
@@ -8,11 +11,12 @@ import { Redirect } from "react-router";
 import { State } from "../../store/reducers/rootReducer";
 import { Routes } from "../../routing/constnts";
 import Icon from "../../components/Icon/Icon";
-import { connect } from "react-redux";
 
 import "./WelcomScreenConfigForm.css"
 
-type IProps = {}
+type IProps = {
+  className?: string;
+  }
   & ReturnType<typeof mapDispatchToProps>
   & ReturnType<typeof mapStateToProps>;
 
@@ -43,7 +47,7 @@ class WelcomeScreenConfigForm extends React.Component<IProps, IState> {
   }
 
   render() {
-    const { questions } = this.props;
+    const { questions, className } = this.props;
     const { amount } = this.state;
 
     if (questions !== null) {
@@ -51,9 +55,16 @@ class WelcomeScreenConfigForm extends React.Component<IProps, IState> {
     }
 
     return (
-      <form className="welcome-screen__form">
-        <Selector onChangeHandler={this.handleChange}/>
+      <form className={clsx('welcome-screen-config-form', className)}>
+        <Select
+          className="welcome-screen-config-form__select-difficulty"
+          name="difficulty"
+          label="Difficulty"
+          icon={<Icon name="gamble"/>}
+          onChangeHandler={this.handleChange}
+        />
         <InputField
+          className="welcome-screen-config-form__select-amount"
           name="amount"
           icon={<Icon name='coin'/>}
           label="Amount"
@@ -63,7 +74,7 @@ class WelcomeScreenConfigForm extends React.Component<IProps, IState> {
         />
         <Button
           value="true"
-          className="welcome-screen__submit"
+          className="welcome-screen-config-form__submit"
           type="accent"
           onClick={this.handleClick}
         >

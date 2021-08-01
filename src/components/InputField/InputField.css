@@ -1,30 +1,8 @@
 .input-field {
-
 }
 
-.input-field__label-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-
-.input-field__label {
-  font-family: "QuickSand Bold", serif;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 13px;
-  color: var(--coral-acsent);
-}
-
-.icon {
-  width: 25px;
-  height: 25px;
-  display: flex;
-}
-
-.welcome-screen_input {
-  min-width: 319px;
+.input-field__input {
+  width: 100%;
   border: 1px solid var(--white-text);
   border-radius: 10px;
   height: 54px;
@@ -33,11 +11,4 @@
   font-size: 13px;
   color: var(--white-text);
   padding: 16px 18px;
-  margin-bottom: 121px;
-}
-
-@media screen and (min-width: 1200px){
-  .welcome-screen_input {
-    min-width: 446px;
-  }
 }

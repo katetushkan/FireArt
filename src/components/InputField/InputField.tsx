@@ -1,5 +1,8 @@
-import React from "react";
+import * as React from "react";
+import clsx from "clsx";
+
 import { numericOnly } from "../../services/utils";
+import InputLabel from "../InputLabel/InputLabel";
 
 import './InputField.css';
 
@@ -10,6 +13,7 @@ interface IProps {
   value: string;
   type: 'text' | 'number';
   onChange: (name: string, value: string) => void;
+  className?: string;
 }
 
 class InputField extends React.Component<IProps> {
@@ -37,22 +41,22 @@ class InputField extends React.Component<IProps> {
   }
 
   render() {
-    const { name, label, icon, type, value } = this.props;
+    const { name, label, icon, type, value, className } = this.props;
 
     return (
-      <label className="input-field">
-        <p className="input-field__label-wrapper">
-          {icon}
-          <span className="input-field__label">{label}</span>
-        </p>
+      <InputLabel
+        className={clsx('input-field', className)}
+        icon={icon}
+        label={label}
+      >
         <input
           type={type}
-          className="welcome-screen_input"
+          className="input-field__input"
           name={name}
           value={value}
           onChange={this.onFieldChange}
         />
-      </label>
+      </InputLabel>
     )
   }
 }

@@ -11,7 +11,7 @@ class WelcomeScreen extends React.Component {
             <main className="welcome-screen">
                 <h1 className="welcome-screen__hero">Welcome to the</h1>
                 <img alt="trivia" className="welcome-screen__logo" src={TriviaLogo}/>
-                <WelcomeScreenConfigForm/>
+                <WelcomeScreenConfigForm className="welcome-screen__form"/>
             </main>
         )
     }

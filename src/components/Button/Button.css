@@ -23,24 +23,5 @@
   transform: translateY(4px);
 }
 
-.welcome-screen__submit {
-  min-width: 319px;
-  height: 64px;
-  color: var(--white-text);
-  font-family: "QuickSand Bold";
-  font-style: normal;
-  font-weight: bold;
-  font-size: 15px;
-  text-transform: uppercase;
-}
-
 @media screen and (min-width: 1200px){
-  .welcome-screen__submit {
-    min-width: 446px;
-    height: 89px;
-  }
-
-  .button--accent {
-    margin-bottom: 173px;
-  }
 }

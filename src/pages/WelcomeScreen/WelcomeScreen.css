@@ -6,7 +6,7 @@
                     url("./background-mobile/coral-striped.svg");
 
   background-repeat: no-repeat;
-  background-position: left top, right bottom, left bottom, right top ;
+  background-position: left top, right bottom, left bottom, right top;
   display: flex;
   flex-direction: column;
   padding-top: 116px;
@@ -29,11 +29,24 @@
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 110px;
+}
 
+.welcome-screen__form {
+  align-self: center;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 319px;
 }
 
 /* desktops */
-@media screen and (min-width: 1200px){
+@media screen and (min-width: 1200px) {
+  .welcome-screen {
+    padding-top: 180px;
+    background-image: url("./background-desktop/blue-left.svg"),
+                      url("./background-desktop/blue-right.svg"),
+                      url("./background-desktop/blue-striped.svg"),
+                      url("./background-desktop/coral-striped.svg");
+  }
 
   .welcome-screen__hero {
     font-size: 46px;
@@ -45,13 +58,4 @@
     width: 600px;
     margin-bottom: 110px;
   }
-
-  .welcome-screen {
-    padding-top: 180px;
-    background-image: url("./background-desktop/blue-left.svg"),
-                      url("./background-desktop/blue-right.svg"),
-                      url("./background-desktop/blue-striped.svg"),
-                      url("./background-desktop/coral-striped.svg");
-  }
-
 }

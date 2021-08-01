@@ -1,0 +1,35 @@
+.select {
+}
+
+.select__input-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.select__input-wrapper:after {
+  display: block;
+  content: "";
+  position: absolute;
+  right: 20px;
+  background: url("./select-arrow.svg");
+  background-size: cover;
+  width: 15px;
+  height: 10px;
+  pointer-events: none;
+}
+
+.select__input {
+  width: 100%;
+  border: 1px solid var(--white-text);
+  border-radius: 10px;
+  height: 54px;
+  font-family: "QuickSand Bold", serif;
+  font-style: normal;
+  font-size: 13px;
+  color: var(--white-text);
+  padding: 16px 18px;
+  -webkit-appearance: none;
+  appearance: none;
+}
