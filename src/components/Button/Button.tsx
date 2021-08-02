@@ -28,6 +28,7 @@ class Button extends React.Component<IProps> {
             className={clsx('button', {
               'button--normal': !type || type === 'normal',
               'button--accent': type === 'accent',
+              'button--disabled': disabled,
             }, className)}
             onClick={onClick}
           >
@@ -38,6 +39,7 @@ class Button extends React.Component<IProps> {
             className={clsx('button', {
               'button--normal': !type || type === 'normal',
               'button--accent': type === 'accent',
+              'button--disabled': disabled,
             }, className)}
             onClick={onClick}
             value={value}

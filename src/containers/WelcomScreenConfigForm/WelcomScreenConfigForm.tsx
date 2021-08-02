@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Redirect } from "react-router";
 import { connect } from "react-redux";
 import clsx from "clsx";
 
@@ -7,7 +8,6 @@ import InputField from "../../components/InputField/InputField";
 import Button from "../../components/Button/Button";
 import { Difficulty } from "../../models/Question";
 import { getQuestions } from "../../store/actions/rootActions";
-import { Redirect } from "react-router";
 import { State } from "../../store/reducers/rootReducer";
 import { Routes } from "../../routing/constnts";
 import Icon from "../../components/Icon/Icon";
@@ -15,7 +15,7 @@ import Icon from "../../components/Icon/Icon";
 import "./WelcomScreenConfigForm.css"
 
 type IProps = {
-  className?: string;
+    className?: string;
   }
   & ReturnType<typeof mapDispatchToProps>
   & ReturnType<typeof mapStateToProps>;
@@ -26,6 +26,17 @@ interface IState {
 }
 
 class WelcomeScreenConfigForm extends React.Component<IProps, IState> {
+
+  private readonly DIFFICULTY_OPTIONS = [
+    {
+      name: Difficulty.EASY,
+      value: Difficulty.EASY
+    },
+    {
+      name: Difficulty.HARD,
+      value: Difficulty.HARD
+    }
+  ];
 
   state = {
     amount: "10",
@@ -38,12 +49,12 @@ class WelcomeScreenConfigForm extends React.Component<IProps, IState> {
     } as Pick<IState, keyof IState>);
   }
 
-  handleClick = async (event: React.MouseEvent) => {
+  handleSubmitForm = async (event: React.FormEvent) => {
     event.preventDefault();
+    const { getAllQuestions } = this.props;
+    const { amount, difficulty } = this.state;
 
-    const amount = this.state.amount
-    const difficulty = this.state.difficulty
-    await this.props.getAllQuestions(parseInt(amount), difficulty)
+    await getAllQuestions(parseInt(amount), difficulty)
   }
 
   render() {
@@ -55,11 +66,12 @@ class WelcomeScreenConfigForm extends React.Component<IProps, IState> {
     }
 
     return (
-      <form className={clsx('welcome-screen-config-form', className)}>
+      <form className={clsx('welcome-screen-config-form', className)} onSubmit={this.handleSubmitForm}>
         <Select
           className="welcome-screen-config-form__select-difficulty"
           name="difficulty"
           label="Difficulty"
+          options={this.DIFFICULTY_OPTIONS}
           icon={<Icon name="gamble"/>}
           onChangeHandler={this.handleChange}
         />
@@ -77,7 +89,7 @@ class WelcomeScreenConfigForm extends React.Component<IProps, IState> {
           value="true"
           className="welcome-screen-config-form__submit"
           type="accent"
-          onClick={this.handleClick}
+          disabled={amount === ''}
         >
           true
         </Button>

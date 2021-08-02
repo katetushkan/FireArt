@@ -1,34 +1,36 @@
-.answer-card-wrapper {
+.answer-card {
   min-width: 65px;
   border-radius: 14px;
   display: flex;
   padding: 22px 32px 27px 32px;
   flex-direction: row;
   align-items: center;
-  gap: 14px;
   justify-content: space-between;
 }
 
-.answer-card_p{
+.answer-card__question {
   color: var(--cobalt);
   font-weight: normal;
 }
 
-.answer-card-wrapper.true {
+.answer-card--correct {
   background-color: #FFFBFA;
 }
 
-.answer-card-wrapper.false {
+.answer-card--incorrect {
   background-color: #FFDBDB;
 }
 
+.answer-card__icon {
+  width: 20px;
+  height: 15px;
+  margin-left: 14px;
+  flex-shrink: 0;
+}
+
 @media screen and (min-width: 1440px) {
-  .answer-card-wrapper {
+  .answer-card {
     min-width: 79px;
     padding: 22px 17px 27px 17px;
   }
 }
-
-
-
-

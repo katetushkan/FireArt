@@ -1,0 +1,12 @@
+.answer-list {
+  display: grid;
+  grid-gap: 13px;
+  width: 321px;
+}
+
+@media screen and (min-width: 1440px) {
+  .answer-list {
+    width: 620px;
+    grid-gap: 24px;
+  }
+}

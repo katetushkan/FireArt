@@ -1,7 +1,7 @@
 import React from "react";
-import Button from "../../components/Button/Button";
 import clsx from "clsx";
 
+import Button from "../Button/Button";
 import "./QuestionCard.css";
 
 interface IProps {
@@ -23,7 +23,7 @@ class QuestionCard extends React.Component<IProps> {
     return (
       <article className={clsx("question-card", className)}>
         <p className="question-card__trivia">{question}</p>
-        {answers.map((answer, index) => (
+        {answers.map((answer) => (
           <Button
             key={answer}
             value={answer}

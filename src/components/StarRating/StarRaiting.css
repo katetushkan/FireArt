@@ -1,5 +1,5 @@
-.star-rating{
-  display: flex;
-  flex-direction: row;
-  gap: 5px;
+.star-rating {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 5px;
 }

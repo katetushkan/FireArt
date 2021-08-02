@@ -1,10 +1,11 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { Redirect, RouteComponentProps, withRouter } from "react-router";
+import { Redirect } from "react-router";
 import { Link } from "react-router-dom";
+import clsx from "clsx";
 
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
-import QuestionCard from "../../pages/QuizScreen/QuestionCard";
+import QuestionCard from "../../components/QuestionCard/QuestionCard";
 import { answerQuestion, emptyQuestion } from "../../store/actions/rootActions";
 import { Routes } from "../../routing/constnts";
 import Icon from "../../components/Icon/Icon";
@@ -12,21 +13,25 @@ import { State } from "../../store/reducers/rootReducer";
 import { shuffleArray } from "../../services/utils";
 
 import "./QuizScreenContent.css";
-import clsx from "clsx";
 
 interface IState {
   currentQuestionIndex: number,
 }
 
 type IProps = {
-  className? : string
+  className?: string
 } & ReturnType<typeof mapDispatchToProps>
   & ReturnType<typeof mapStateToProps>;
 
-class QuizScreenContent extends React.Component<RouteComponentProps & IProps, IState> {
-
+class QuizScreenContent extends React.Component<IProps, IState> {
   state = {
     currentQuestionIndex: 0,
+  }
+
+  componentDidMount() {
+    window.scrollTo({
+      top: 0,
+    });
   }
 
   handleQuestionAnswered = (value: string) => {
@@ -37,10 +42,11 @@ class QuizScreenContent extends React.Component<RouteComponentProps & IProps, IS
     this.setState({
       currentQuestionIndex: currentQuestionIndex + 1
     });
+
     (document.activeElement as HTMLElement)?.blur();
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      // behavior: 'smooth'
     });
   }
 
@@ -65,20 +71,24 @@ class QuizScreenContent extends React.Component<RouteComponentProps & IProps, IS
 
     return (
       <div className={clsx('quiz-screen-content', className)}>
-        <Link to={Routes.WELCOME_SCREEN} onClick={this.handleClickBack} >
+        <Link to={Routes.WELCOME_SCREEN} onClick={this.handleClickBack}>
           <Icon name="cancel" className="quiz-screen-content__link"/>
         </Link>
-        <div className="quiz-screen-content__wrapper">
+        <section className="quiz-screen-content__wrapper">
           <h1 className="quiz-screen-content__topic">{currentQuestion.category}</h1>
           <h3 className="quiz-screen-content__level">level {currentQuestionIndex + 1}</h3>
-          <ProgressBar className="quiz-screen-content__progress-bar" score={currentQuestionIndex + 1} count={questionCount}/>
+          <ProgressBar
+            className="quiz-screen-content__progress-bar"
+            score={currentQuestionIndex + 1}
+            count={questionCount}
+          />
           <QuestionCard
+            className="quiz-screen-content__question-card"
             question={currentQuestion.question}
             answers={answers}
             onAnswer={this.handleQuestionAnswered}
-            className="quiz-screen-content__question-card"
           />
-        </div>
+        </section>
       </div>
     )
   }
@@ -98,4 +108,4 @@ const mapDispatchToProps = (dispatch: any) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(QuizScreenContent));
+export default connect(mapStateToProps, mapDispatchToProps)(QuizScreenContent);

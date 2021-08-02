@@ -17,6 +17,8 @@ const htmlEntities: Record<string, string> = {
   '&ldquo;': '“',
   '&rdquo;': '”',
   '&deg;' : '°',
+  '&Aring;': 'Å',
+  '&ocirc;': 'ô'
 };
 
 export function decodeHTML(src: string): string {

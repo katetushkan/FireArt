@@ -1,15 +1,14 @@
 .welcome-screen-config-form {
+  display: flex;
+  flex-direction: column;
 }
 
 .welcome-screen-config-form__select-difficulty {
   margin-bottom: 25px;
 }
 
-.welcome-screen-config-form__select-amount {
-  margin-bottom: 121px;
-}
-
 .welcome-screen-config-form__submit {
+  margin-top: auto;
   min-width: 319px;
   height: 64px;
   color: var(--white-text);
@@ -27,6 +26,6 @@
   .welcome-screen-config-form__submit {
     min-width: 446px;
     height: 89px;
-    margin-bottom: 173px;
+    margin-top: 110px;
   }
 }

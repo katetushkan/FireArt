@@ -1,4 +1,5 @@
 import * as React from "react";
+import clsx from "clsx";
 import Star from "../Star/Star";
 
 import "./StarRaiting.css";
@@ -6,21 +7,22 @@ import "./StarRaiting.css";
 interface IProps {
   score: number;
   count: number;
-  classNameStar?: string;
   className?: string;
+  classNameStar?: string;
 }
 
-const StarRating: React.FC<IProps> = ({ count, score, classNameStar, className }) => {
-  const array = new Array(count).fill(null);
+const StarRating: React.FC<IProps> = ({ count, score, className, classNameStar }) => {
+  const rating = 100 * score / count / 10;
+  const array = new Array(10).fill(null);
   return (
-    <div className="star-rating">
+    <div className={clsx("star-rating", className)}>
       {
         array.map((_, index) =>
           <Star
             key={index}
             id={index.toString()}
-            filled={index + 1 <= score}
-            className={className}
+            filled={index + 1 <= rating}
+            className={classNameStar}
           />
         )}
     </div>

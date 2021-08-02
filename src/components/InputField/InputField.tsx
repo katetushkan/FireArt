@@ -5,7 +5,6 @@ import { numericOnly } from "../../services/utils";
 import InputLabel from "../InputLabel/InputLabel";
 
 import './InputField.css';
-import { HTMLAttributes } from "react";
 
 interface IProps {
   name: string;
@@ -13,7 +12,7 @@ interface IProps {
   label: string;
   value: string;
   type: 'text' | 'number';
-  inputMode?: HTMLAttributes<HTMLInputElement>['inputMode'];
+  inputMode?: React.HTMLAttributes<HTMLInputElement>['inputMode'];
   onChange: (name: string, value: string) => void;
   className?: string;
 }

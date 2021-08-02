@@ -1,4 +1,4 @@
-.quiz-screen{
+.quiz-screen {
   flex: 1 0;
   background-color: var(--white-text);
   background-image: url("./background-mobile/blue-left.svg"),
@@ -12,21 +12,22 @@
   display: flex;
   flex-direction: column;
   padding-top: 48px;
-  padding-bottom: 113px;
 }
 
-.quiz-screen__content{
+.quiz-screen__content {
   max-width: 340px;
+  flex-grow: 1;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 20px;
 }
 
 @media screen and (min-width: 1200px) {
-  .quiz-screen__content{
+  .quiz-screen__content {
     max-width: 1040px;
   }
 
-  .quiz-screen{
+  .quiz-screen {
     background-image: url("./background-desktop/blue-left.svg"),
                       url("./background-desktop/blue-striped.svg"),
                       url("./background-desktop/blue-striped-left.svg"),

@@ -3,11 +3,11 @@
   width: 100%;
   background-color: var(--cobalt);
   background-image: url("./background-mobile/coral-striped.svg"),
-                    url("./background-mobile/blue-left.svg"),
-                    url("./background-mobile/blue-right-bottom.svg"),
-                    url("./background-mobile/blue-right.svg"),
-                    url("./background-mobile/coral-striped-right.svg"),
-                    url("./background-mobile/blue-right-top.svg");
+  url("./background-mobile/blue-left.svg"),
+  url("./background-mobile/blue-right-bottom.svg"),
+  url("./background-mobile/blue-right.svg"),
+  url("./background-mobile/coral-striped-right.svg"),
+  url("./background-mobile/blue-right-top.svg");
 
   background-repeat: no-repeat;
   background-position: left top, left bottom, right bottom, right, right 88%, right top;
@@ -17,11 +17,12 @@
   padding-bottom: 38px;
 }
 
-.final-screen__link{
+.final-screen__link {
   width: 15px;
   height: 15px;
   color: var(--white-text);
 }
+
 .final-screen__content-wrapper {
   margin-right: auto;
   max-width: 340px;
@@ -31,7 +32,7 @@
   align-items: center;
 }
 
-.final-score-wrapper {
+.final-screen__results-wrapper {
   display: inline-flex;
   width: 100%;
   justify-content: space-between;
@@ -39,21 +40,23 @@
   margin-bottom: 20px;
 }
 
-.final-score-wrapper__score {
-  display: inline-flex;
+.final-screen__results-wrapper__score {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 14px;
   margin-left: auto;
   margin-right: auto;
   align-items: center;
-  gap: 14px;
 }
-.user-icon-frame {
+
+.final-screen__icon {
   width: 32px;
   height: 32px;
   background-color: var(--white-text);
   border-radius: 50%;
 }
 
-.final-score_h1 {
+.final-score__hero {
   font-weight: bold;
   font-size: 18px;
   color: var(--white-text);
@@ -70,15 +73,17 @@
 }
 
 .final-screen__rating {
-  width: 25px;
-  height: 25px;
-  display: flex;
   margin-bottom: 19px;
 }
 
-.final-screen__list{
+.final-screen__rating-star {
+  width: 25px;
+  height: 25px;
+}
+
+.final-screen__list {
   width: 321px;
-  margin-bottom: 13px;
+  margin-bottom: 26px;
 }
 
 .final-screen__again {
@@ -94,7 +99,7 @@
 }
 
 @media screen and (min-width: 1440px) {
-  .final-screen__link{
+  .final-screen__link {
     width: 25px;
     height: 25px;
     align-self: end;
@@ -106,15 +111,15 @@
 
   .final-screen {
     background-image: url("./background-desktop/blue-left.svg"),
-                      url("./background-desktop/blue-striped.svg"),
-                      url("./background-desktop/blue-right.svg"),
-                      url("./background-desktop/coral-striped.svg");
+    url("./background-desktop/blue-striped.svg"),
+    url("./background-desktop/blue-right.svg"),
+    url("./background-desktop/coral-striped.svg");
     background-position: left top, left bottom, right bottom, right top;
     padding-top: 103px;
     padding-bottom: 113px;
   }
 
-  .user-icon-frame {
+  .final-screen__icon {
     width: 52px;
     height: 52px;
   }
@@ -128,19 +133,22 @@
     font-size: 27px;
   }
 
-  .final-score_h1 {
+  .final-score_hero {
     font-size: 21px;
   }
 
   .final-screen__rating {
-    width: 35px;
-    height: 35px;
     margin-bottom: 58px;
   }
 
-  .final-screen__list{
+  .final-screen__rating-star {
+    width: 35px;
+    height: 35px;
+  }
+
+  .final-screen__list {
     width: 620px;
-    margin-bottom: 37px;
+    margin-bottom: 61px;
   }
 
   .final-screen__again {
