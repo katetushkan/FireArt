@@ -1,46 +1,48 @@
-# Getting Started with Create React App
+# Trivia Challenge Quiz App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This app is created to spend your time on useful things such as eductaion. Have a free minute? Just answer a few questions in this Quiz App and increase your erudition!
 
-## Available Scripts
+## Technologies & Tools
 
-In the project directory, you can run:
+![](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white) 
+![](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![](https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white)
+![](https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white)
+![](https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white)
 
-### `npm start`
+## Description 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+2 versions: mobile and desltop are provided for this web-app. Both of them have full set of available functions. 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+### The first screen. Welcome Page provide us: 
+ - set of configurable parameters such as **Difficulty** and **Amount** of questions 
+    > Input field for Amount is configured to numeric input, and Difficulty could be        changed by using Select
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+ - Button "PLAY" to start the game
+    > There is no possibilities to start the game until all paremeters are provided.
+    > Button is performed in 5 states: active, hover, focus, disabled and basic state
+ - Loader appear and will be placed on the screen until the results from the api would be placed in Redux
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### The second screen. Quiz Page provide us:
+ - The topic, the question, a progress bar to see how many questions was already answered, the level - number of current question, and buttons with possible answers.
+   > Answer's buttons are performed in 4 states: active, hover, focus and basic state
+ - The :negative_squared_cross_mark: button let us come back to the Welcome Page
+   > Button made with <a> tag because this action redirects us to another page
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### The third screen. Final Page provide us:
+ - User's score and relative rating
+    > To avoid unnesseasry screen size increasing, it was made a decision to make a star           rating relative. Now it is showing us the percentage of successfully answered questions. 
+ - List of questions with user's answers
+ - The :negative_squared_cross_mark: button let us come back to the Welcome Page
+    > Button made with <a> tag because this action redirects us to another page
+ - Button "PLAY AGAIN" to restart this game with the same questions.
+    > Button is performed in 4 states: active, hover, focus and basic state
+    > Button made with <a> tag because this action redirects us to another page
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Design Details
 
-### `npm run eject`
+ - It was decided to make dropdown with a <select> tag because as we have a mobile version means that  usage of <select> will call a native select for this case. This behavior would be more comfortable for mobile users. 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
