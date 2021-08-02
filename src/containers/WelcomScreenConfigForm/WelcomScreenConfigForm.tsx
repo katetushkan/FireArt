@@ -11,6 +11,7 @@ import { getQuestions } from "../../store/actions/rootActions";
 import { State } from "../../store/reducers/rootReducer";
 import { Routes } from "../../routing/constnts";
 import Icon from "../../components/Icon/Icon";
+import Loader from "../../components/Loader/Loader";
 
 import "./WelcomScreenConfigForm.css"
 
@@ -58,33 +59,42 @@ class WelcomeScreenConfigForm extends React.Component<IProps, IState> {
   }
 
   render() {
-    const { questions, className } = this.props;
+    const { questions, className, loading } = this.props;
     const { amount } = this.state;
 
     if (questions !== null) {
       return <Redirect to={Routes.QUIZ_SCREEN}/>;
     }
 
+    if (loading) {
+      return <Loader/>;
+    }
     return (
       <form className={clsx('welcome-screen-config-form', className)} onSubmit={this.handleSubmitForm}>
-        <Select
-          className="welcome-screen-config-form__select-difficulty"
-          name="difficulty"
-          label="Difficulty"
-          options={this.DIFFICULTY_OPTIONS}
-          icon={<Icon name="gamble"/>}
-          onChangeHandler={this.handleChange}
-        />
-        <InputField
-          className="welcome-screen-config-form__select-amount"
-          name="amount"
-          icon={<Icon name='coin'/>}
-          label="Amount"
-          type="text"
-          inputMode="numeric"
-          value={amount}
-          onChange={this.handleChange}
-        />
+        {
+          loading ? <Loader/>
+            :
+            <>
+              <Select
+                className="welcome-screen-config-form__select-difficulty"
+                name="difficulty"
+                label="Difficulty"
+                options={this.DIFFICULTY_OPTIONS}
+                icon={<Icon name="gamble"/>}
+                onChangeHandler={this.handleChange}
+              />
+              <InputField
+                className="welcome-screen-config-form__select-amount"
+                name="amount"
+                icon={<Icon name='coin'/>}
+                label="Amount"
+                type="text"
+                inputMode="numeric"
+                value={amount}
+                onChange={this.handleChange}
+              />
+            </>
+        }
         <Button
           value="true"
           className="welcome-screen-config-form__submit"
@@ -101,6 +111,7 @@ class WelcomeScreenConfigForm extends React.Component<IProps, IState> {
 const mapStateToProps = (state: State) => {
   return {
     questions: state.questions,
+    loading: state.loading
   }
 }
 

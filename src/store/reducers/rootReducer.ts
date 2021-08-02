@@ -31,13 +31,19 @@ const rootReducer = (state: State = initialState, action: RootActions) => {
         case actionTypes.GET_QUESTIONS:
             return {
                 ...state,
-                questions: action.questions
+                questions: action.questions,
+                loading: false
             };
         case actionTypes.ANSWER_QUESTION: return answer(state, action);
         case actionTypes.EMPTY_QUESTIONS:
             return {
                 ...state,
                 questions: null
+            }
+        case actionTypes.GET_QUESTIONS_STARTED:
+            return {
+                ...state,
+                loading: true
             }
         default:
             return state;
