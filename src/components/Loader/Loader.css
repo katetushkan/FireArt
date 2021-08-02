@@ -6,12 +6,13 @@
   background: var(--cobalt);
 }
 .wave {
-  width: 7px;
+  width: 3px;
   height: 100px;
+  opacity: 0.5;
   background: linear-gradient(0deg,  #DBDEFF 50%, var(--score) 1%, var(--score));
   margin: 10px;
+  border-radius: 3px;
   animation: wave 1s linear infinite;
-  border-radius: 20px;
 }
 .wave:nth-child(2) {
   animation-delay: 0.1s;
@@ -26,29 +27,44 @@
   animation-delay: 0.4s;
 }
 .wave:nth-child(6) {
-  animation-delay: 0.5s;
+  animation-delay: 0.45s;
 }
 .wave:nth-child(7) {
-  animation-delay: 0.6s;
+  animation-delay: -0.55s;
 }
 .wave:nth-child(8) {
-  animation-delay: 0.7s;
+  animation-delay: -0.7s;
 }
 .wave:nth-child(9) {
-  animation-delay: 0.8s;
+  animation-delay: -0.8s;
 }
 .wave:nth-child(10) {
-  animation-delay: 0.9s;
+  animation-delay: -0.9s;
 }
 
 @keyframes wave {
   0% {
+    opacity: 0.2;
+    background: linear-gradient(0deg,  #DBDEFF 90%, var(--score) 1%, var(--score));
     transform: scale(0);
   }
+
+  30% {
+    background: linear-gradient(0deg,  #DBDEFF 40%, var(--score) 1%, var(--score));
+  }
+
   50% {
     transform: scale(1);
+    background: linear-gradient(0deg,  #DBDEFF 30%, var(--score) 1%, var(--score));
   }
+
+  70% {
+    background: linear-gradient(0deg,  #DBDEFF 40%, var(--score) 1%, var(--score));
+  }
+
   100% {
+    opacity: 0.7;
+    background: linear-gradient(0deg,  #DBDEFF 30%, var(--score) 1%, var(--score));
     transform: scale(0);
   }
 }
